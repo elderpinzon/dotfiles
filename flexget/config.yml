@@ -1,0 +1,32 @@
+tasks:
+  # downloading task
+  download-rss:
+    rss: http://showrss.info/user/32851.rss?magnets=true&namespaces=true&name=null&quality=null&re=null
+    # fetch all the feed series
+    all_series: yes
+    # use transmission to download the torrents
+    transmission:
+      host: localhost
+      port: 9090
+      username: eldertorrent
+      password: descarga
+  # sorting task
+  sort-files:
+    filesystem:
+      # directory with the files to be sorted
+      recursive: True
+      path: /media/Toshiba/Downloads/
+      # fetch all avi, mkv and mp4 files, skips the .part files (unfinished torrents)
+      regexp: '.*\.(avi|mkv|mp4)$'
+    accept_all: yes
+    seen: local
+    # this is needed for the episode names
+    thetvdb_lookup: yes
+    all_series:
+      # for some reason all_series rejects all episodes here, even with seen: local, so parse_only must be added
+      parse_only: yes
+    move:
+      # this is where the series will be put
+      to: /media/Toshiba/TV/{{ tvdb_series_name }}
+      # save the file as "Series Name - SxxEyy - Episode Name.ext"
+      rename: '{{ tvdb_series_name }} - {{ series_id }} - {{ tvdb_ep_name }}{{ location | pathext }}'
