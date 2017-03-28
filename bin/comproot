@@ -1,0 +1,39 @@
+#############################################################
+## Compiles a stand-alone ROOT app by adding the appropiate
+## root libraries. The result is a .exe executable
+## Usage:
+##       comproot *.{cxx,cc,C}
+#############################################################
+
+#!/bin/bash
+set -x
+
+if [ -f $1.exe ]
+then
+    rm $1.exe
+fi
+
+#g++ -O2 -pipe -Wall -W -Woverloaded-virtual -fPIC -fopenmp -Iinclude `root-config --cflags` -o $1.o -c -fopenmp $1
+g++ -O2 -pipe -Wall -W -Woverloaded-virtual -fPIC -Iinclude `root-config --cflags` -std=gnu++0x -o $1.o -c $1
+
+fullfile=$1
+filename=$(basename "$fullfile")
+extension="${filename##*.}"
+filename="${filename%.*}"
+
+if [ -f $1.o ] 
+then
+#    g++ -O2 -fopenmp $1.o `root-config --glibs` -o $filename.exe;
+    g++ -O2 $1.o `root-config --glibs` -o $filename.exe;
+    rm $1.o
+else 
+    echo "Library linking failed"
+    exit 0
+fi
+
+if [ -f $filename.exe ] 
+then
+    echo "Succesful compilation!"
+else
+    echo "Compilation failed :("
+fi
