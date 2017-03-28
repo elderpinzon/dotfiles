@@ -1,0 +1,9 @@
+#############################################################
+## Starts a vncserver desktop. Handy to set up as a 
+## cron job @reboot. "-localhost" flag forces it to only accept
+## connections from localhost, i.e., requires secure ssh pipeline
+#############################################################
+#!/bin/bash
+
+export USER="elder"
+vncserver -depth 24 -geometry 1440x900 :1 -localhost
