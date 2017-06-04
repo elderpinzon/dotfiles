@@ -1,0 +1,40 @@
+alias ls='ls -G'
+alias ll='ls -alF'
+alias la='ls -A'
+alias l='ls -CF'
+alias lt='ls -lrth'
+alias lth='ls -lth | head'
+alias grep='grep --color=auto'
+alias neut18='ssh -Y neut18.triumf.ca'
+alias neutvnc='echo "Using localhost:5902";ssh -L 5902:localhost:5902 neut18.triumf.ca'
+alias neut19='ssh -Y neut19.triumf.ca'
+alias neutsrv2='ssh -Y neutsrv2.triumf.ca'
+alias jjnu='ssh jnulsv01.kek.jp'
+alias jnu='ssh jnusrv01.kek.jp'
+alias jjnuvnc='echo "Using localhost:5901";ssh -L 5901:localhost:5901 jnulsv01.kek.jp'
+alias jnuvnc='echo "Using localhost:5901";ssh -L 5901:localhost:5901 jnusrv01.kek.jp'
+alias lab='ssh neutrino.phys.yorku.ca'
+alias labvnc='echo "Using localhost:5903";ssh -L 5903:localhost:5901 neutrino.phys.yorku.ca'
+alias pion='ssh -i ~/.ssh/id_rsa.SciNet 130.63.76.208'
+alias pionvnc='echo "Using localhost:5904";ssh -L 5904:localhost:5901 130.63.76.208'
+alias 238='ssh -i ~/.ssh/id_rsa.SciNet petrie238-2.math.yorku.ca'
+alias 238vnc='echo "Using localhost:5905";ssh -L 5905:localhost:5901 petrie238-2.math.yorku.ca'
+alias scinet='ssh -i ~/.ssh/id_rsa.SciNet -Y login.scinet.utoronto.ca'
+alias ema='/Applications/Emacs.app/Contents/MacOS/Emacs -nw'
+alias play='sudo /usr/local/bin/get-shit-done.sh play'
+alias work='sudo /usr/local/bin/get-shit-done.sh work'
+alias kekccx='ssh -X sshcc1.kek.jp'
+alias kekcc='ssh sshcc1.kek.jp'
+alias parallel='ssh parallel.westgrid.ca'
+alias guillimin='ssh guillimin.hpc.mcgill.ca -l elder'
+alias cxcvs='export CVSROOT=:ext:elder@neutrino.phys.yorku.ca:/repo; export CVSEDITOR=emacs; echo "Setting CVS for CXDuetAnalysis"; cd ~/Work/CXDuetAnalysis/'
+alias see='open -a Preview'
+
+betterdiff(){
+    printf "\nDiffing \e[31m$1\e[0m and \e[34m$2\e[0m\n"
+    colordiff $1 $2
+    printf "\nDiffing \e[31m$1\e[0m and \e[34m$2\e[0m\n"
+}
+alias cdf=betterdiff
+alias t2k='ssh -Y t2k-login.j-parc.jp'
+alias hackondata='curl "http://hackondata.com:9999/api/hackathon/profile?token=cdbae88c-0fb2-47f4-95f3-654d31dd1743" | jq'
